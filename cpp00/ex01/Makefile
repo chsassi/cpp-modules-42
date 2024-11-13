@@ -1,10 +1,10 @@
-NAME = megaphone
+NAME = phonebook
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -g -std=c++98
 RM = rm -f
 
-SRC =	./megaphone.cpp
+SRC =	./.cpp
 
 $(NAME): $(SRC)
 	$(CC) $(CPPFLAGS) $(SRC) -o $(NAME)
