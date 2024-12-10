@@ -17,7 +17,12 @@ class Contact
 
 	public:
 		Contact();
-		void	updateContact(const std::string &firstName, const std::string &lastName, const std::string &nickName, const std::string &phoneNumber, const std::string &darkSecret);
+		bool		isEmpty();
+		void		displayContact();
+		void		updateContact(const std::string &firstName, const std::string &lastName, const std::string &nickName, const std::string &phoneNumber, const std::string &darkSecret);
+		std::string	getFirstName();
+		std::string	getLastName();
+		std::string	getNickName();
 };
 
 #endif

@@ -11,13 +11,14 @@ class Phonebook
 {
 	private:
 		Contact	contact[8];
-		int		nextContactIndex;
+		int		ContactIndex;
 	public:
 		Phonebook();
 		std::string	getInput(const std::string &info);
 		void		addContact();
 		void		searchContact();
 		int			chooseMode(const std::string &mode);
+		void		showPhonebook();
 };
 
 #endif

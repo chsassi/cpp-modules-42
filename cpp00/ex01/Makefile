@@ -12,6 +12,7 @@ RESET=\033[0m
 
 SRC =	./Contact.cpp \
 		./Phonebook.cpp \
+		./utils.cpp \
 		./main.cpp
 
 $(NAME): $(SRC)
