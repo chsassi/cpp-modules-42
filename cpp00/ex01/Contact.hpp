@@ -19,10 +19,12 @@ class Contact
 		Contact();
 		bool		isEmpty();
 		void		displayContact();
-		void		updateContact(const std::string &firstName, const std::string &lastName, const std::string &nickName, const std::string &phoneNumber, const std::string &darkSecret);
+		void		setContact(const std::string &firstName, const std::string &lastName, const std::string &nickName, const std::string &phoneNumber, const std::string &darkSecret);
 		std::string	getFirstName();
 		std::string	getLastName();
 		std::string	getNickName();
+		std::string	getPhoneNumber();
+		std::string	getDarkSecret();
 };
 
 #endif

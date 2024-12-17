@@ -1,16 +1,16 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 
-std::string normalise(std::string attribute)
+std::string	normalise(std::string attribute)
 {
-    int len = attribute.size();
+	int len = attribute.size();
 
-    if (len > MAX_SIZE)
-    {
-        std::string newString = attribute.substr(0, MAX_SIZE - 1);
-        newString += ".";
-        return (newString);
-    }
-    else
-        return (attribute);
+	if (len > MAX_SIZE)
+	{
+		std::string newString = attribute.substr(0, MAX_SIZE - 1);
+		newString += ".";
+		return (newString);
+	}
+	else
+		return (attribute);
 }

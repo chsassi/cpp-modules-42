@@ -10,9 +10,9 @@ Contact::Contact()
 
 bool	Contact::isEmpty()
 {
-	if (firstName.empty() || lastName.empty() || nickName.empty() || phoneNumber.empty() || darkSecret.empty())
-		return (0);
-	return (1);
+	if (firstName.empty() && lastName.empty() && nickName.empty() && phoneNumber.empty() && darkSecret.empty())
+		return (1);
+	return (0);
 }
 
 void	Contact::displayContact()
@@ -24,8 +24,7 @@ void	Contact::displayContact()
 			  << "Darkest Secret: " << this->darkSecret << "\n";
 }
 
-
-void	Contact::updateContact(const std::string &firstName, const std::string &lastName, const std::string &nickName, const std::string &phoneNumber, const std::string &darkSecret)
+void	Contact::setContact(const std::string &firstName, const std::string &lastName, const std::string &nickName, const std::string &phoneNumber, const std::string &darkSecret)
 {
 	this->firstName = firstName;
 	this->lastName = lastName;
@@ -47,4 +46,14 @@ std::string	Contact::getLastName()
 std::string	Contact::getNickName()
 {
 	return (this->nickName);
+}
+
+std::string	Contact::getPhoneNumber()
+{
+	return (this->phoneNumber);
+}
+
+std::string	Contact::getDarkSecret()
+{
+	return (this->darkSecret);
 }

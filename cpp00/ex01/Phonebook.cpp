@@ -1,6 +1,6 @@
 #include "Phonebook.hpp"
+#include "Contact.hpp"
 
-std::string renderWhitespaces(int diff, char delim);
 std::string normalise(std::string attribute);
 
 Phonebook::Phonebook()
@@ -38,7 +38,7 @@ void	Phonebook::addContact()
 	std::string phoneNumber = getInput("phone number");
 	std::string darkSecret = getInput("darkest secret");
 
-	contact[ContactIndex].updateContact(firstName, lastName, nickName, phoneNumber, darkSecret);
+	contact[ContactIndex].setContact(firstName, lastName, nickName, phoneNumber, darkSecret);
 	ContactIndex++;
 	if (ContactIndex == 8)
 		ContactIndex = 0;
@@ -61,21 +61,34 @@ void	Phonebook::showPhonebook()
 			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normalise(contact[i].getLastName());
 			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normalise(contact[i].getNickName());
 			std::cout << "|" << std::endl;
-    }
+	}
 	std::cout << line << std::endl;
+	std::cout << "Search a contact by its index: enter a valid number from 0 to 7: ";
 }
 
 void	Phonebook::searchContact()
 {
 	Contact	contact;
-	std::string read;
+	std::string input;
+	char *x;
+	int	choice;
 	int i = 0;
 
 	showPhonebook();
 	do
 	{
-		std::getline(std::cin, read);
-		if (std::cin.fail() || read == "EXIT")
+		std::getline(std::cin, input);
+		choice = strtol(input.c_str(), &x, 10);
+		if (*x != '\0' || x == input.c_str())
+		{
+			std::cout << "Enter a valid index or an existing contact\n";
+			continue ;
+		}
+		else if (input.size() == 1 && choice >= 0 && choice <= 7 && !this->contact[choice].isEmpty())
+			this->contact[choice].displayContact();
+		else if (choice < 0 || choice > 7 || this->contact[choice].isEmpty())
+			std::cout << "Enter a valid index or an existing contact\n";
+		if (std::cin.fail() || input == "EXIT")
 			break ;
 	} while (i != 0);
 }
