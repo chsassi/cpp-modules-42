@@ -1,7 +1,7 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 
-std::string	normalise(std::string attribute)
+std::string	normStr(std::string attribute)
 {
 	int len = attribute.size();
 

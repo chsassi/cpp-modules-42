@@ -1,7 +1,7 @@
 #include "Phonebook.hpp"
 #include "Contact.hpp"
 
-std::string normalise(std::string attribute);
+std::string normStr(std::string attribute);
 
 Phonebook::Phonebook()
 	: ContactIndex(0)
@@ -27,7 +27,7 @@ std::string	Phonebook::getInput(const std::string &info)
 		if (isWhitespace)
 			value = "";
 	} while (value.empty());
-	return value;
+	return (value);
 }
 
 void	Phonebook::addContact()
@@ -57,9 +57,9 @@ void	Phonebook::showPhonebook()
 	for (int i = 0; i < 8; i++)
 	{
 			std::cout << "|" << std::setw(MAX_SIZE) << std::right << i;
-			std::cout << "|" << std::setw(MAX_SIZE) << std::right  << normalise(contact[i].getFirstName());
-			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normalise(contact[i].getLastName());
-			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normalise(contact[i].getNickName());
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right  << normStr(contact[i].getFirstName());
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normStr(contact[i].getLastName());
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normStr(contact[i].getNickName());
 			std::cout << "|" << std::endl;
 	}
 	std::cout << line << std::endl;
@@ -104,6 +104,6 @@ int	Phonebook::chooseMode(const std::string &mode)
 	else
 	{
 		std::cout << "\nInvalid input!\n" << std::endl;
-		return 1;
+		return (1);
 	}
 }
