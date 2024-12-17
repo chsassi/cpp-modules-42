@@ -1,16 +1,16 @@
 #include "Contact.hpp"
 
 Contact::Contact()
-	: firstName(" "),
-		lastName(" "),
-		nickName(" "),
-		phoneNumber(" "),
-		darkSecret(" ")
+	: firstName(""),
+		lastName(""),
+		nickName(""),
+		phoneNumber(""),
+		darkSecret("")
 {}
 
 bool	Contact::isEmpty()
 {
-	if (firstName == " " || lastName == " " || nickName == " " || phoneNumber == " " || darkSecret == " ")
+	if (firstName.empty() || lastName.empty() || nickName.empty() || phoneNumber.empty() || darkSecret.empty())
 		return (0);
 	return (1);
 }
@@ -48,4 +48,3 @@ std::string	Contact::getNickName()
 {
 	return (this->nickName);
 }
-

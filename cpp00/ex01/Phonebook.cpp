@@ -11,8 +11,22 @@ std::string	Phonebook::getInput(const std::string &info)
 {
 	std::string value;
 
-	std::cout << "Insert " << info << ": ";
-	std::getline(std::cin, value);
+	do
+	{
+		std::cout << "Insert " << info << ": ";
+		std::getline(std::cin, value);
+		bool isWhitespace = true;
+		for (std::size_t i = 0; i < value.size(); i++)
+		{
+			if (!isspace(value[i]))
+			{
+				isWhitespace = false;
+				break ;
+			}
+		}
+		if (isWhitespace)
+			value = "";
+	} while (value.empty());
 	return value;
 }
 
@@ -32,22 +46,23 @@ void	Phonebook::addContact()
 
 void	Phonebook::showPhonebook()
 {
-	std::cout << "------------------------------------------------------";
-	std::cout << "\n|    ID    |  First Name  |  Last Name  |  Nickname  |\n";
-	std::cout << "------------------------------------------------------\n";
+	std::string line(45, '-');
+	std::cout << line << std::endl;
+	std::cout << "|" << std::setw(MAX_SIZE) << std::right << "ID";
+	std::cout << "|" << std::setw(MAX_SIZE) << std::right << "First Name";
+	std::cout << "|" << std::setw(MAX_SIZE) << std::right << "Last Name";
+	std::cout << "|" << std::setw(MAX_SIZE) << std::right << "Nickname";
+	std::cout << "|" << std::endl;
+	std::cout << line << std::endl;
 	for (int i = 0; i < 8; i++)
 	{
-		if (contact[i].isEmpty())
-		{
-					std::cout << "|     " << i << "     |"
-					  << normalise(contact[i].getFirstName()) << "    |"
-					  << normalise(contact[i].getLastName()) << "   |"
-					  << normalise(contact[i].getNickName()) << " |\n";
-		}
-		else
-			std::cout << "|     " << i << "    |                                         |\n";
-	}
-	std::cout << "------------------------------------------------------\n";
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right << i;
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right  << normalise(contact[i].getFirstName());
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normalise(contact[i].getLastName());
+			std::cout << "|" << std::setw(MAX_SIZE) << std::right << normalise(contact[i].getNickName());
+			std::cout << "|" << std::endl;
+    }
+	std::cout << line << std::endl;
 }
 
 void	Phonebook::searchContact()
@@ -56,11 +71,10 @@ void	Phonebook::searchContact()
 	std::string read;
 	int i = 0;
 
-	showPhonebook(); //display all contacts
+	showPhonebook();
 	do
 	{
 		std::getline(std::cin, read);
-		
 		if (std::cin.fail() || read == "EXIT")
 			break ;
 	} while (i != 0);

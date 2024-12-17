@@ -2,10 +2,13 @@
 # define PHONEBOOK_H
 
 # include <iostream>
+# include <iomanip>
 # include <string>
 # include <cstdlib>
 # include <cstring>
 # include "Contact.hpp"
+
+#define MAX_SIZE 10
 
 class Phonebook
 {
